@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: timesheet
-Implementation-Version: 1.0
-Built-By: Saddem
+Implementation-Version: 2.0
+Built-By: user
 Implementation-Vendor-Id: tn.esprit.spring
 Build-Jdk: 1.8.0_144
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo

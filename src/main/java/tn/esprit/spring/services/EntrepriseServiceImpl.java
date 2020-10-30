@@ -3,6 +3,8 @@ package tn.esprit.spring.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,7 @@ import tn.esprit.spring.repository.EntrepriseRepository;
 
 @Service
 public class EntrepriseServiceImpl implements IEntrepriseService {
+	private static final Logger l = LogManager.getLogger(EntrepriseServiceImpl.class);
 
 	@Autowired
     EntrepriseRepository entrepriseRepoistory;
@@ -21,12 +24,15 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	DepartementRepository deptRepoistory;
 	
 	public int ajouterEntreprise(Entreprise entreprise) {
+		l.info("Entreprise : "); 
 		entrepriseRepoistory.save(entreprise);
+		l.debug("entreprise +++ : " + entreprise);
 		return entreprise.getId();
 	}
 
 	public int ajouterDepartement(Departement dep) {
 		deptRepoistory.save(dep);
+		l.debug("Departement +++ : " + dep);
 		return dep.getId();
 	}
 	
