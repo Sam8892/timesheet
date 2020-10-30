@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
@@ -21,7 +24,9 @@ import tn.esprit.spring.repository.TimesheetRepository;
 
 @Service
 public class EmployeServiceImpl implements IEmployeService {
-
+    
+	
+	
 	@Autowired
 	EmployeRepository employeRepository;
 	@Autowired
@@ -30,24 +35,37 @@ public class EmployeServiceImpl implements IEmployeService {
 	ContratRepository contratRepoistory;
 	@Autowired
 	TimesheetRepository timesheetRepository;
+	
+	private static final Logger l = LogManager.getLogger(EmployeServiceImpl.class);
 
 	@Override
 	public Employe authenticate(String login, String password) {
+		l.info("In authenicate : login =" + login);
+		 
 		return employeRepository.getEmployeByEmailAndPassword(login, password);
-	}
+	
+
+	 
+	
+	   }
 
 	@Override
 	public int addOrUpdateEmploye(Employe employe) {
+		l.info("In addOrUpdate : " + employe);
 		employeRepository.save(employe);
+		l.info("out of addOrUpdate:" + employe.getId());
 		return employe.getId();
 	}
 
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
+		l.info("In getEmployeById : " + employeId);
 		Employe employe = employeRepository.findById(employeId).get();
+		l.info("In added new Email : " + email);
 		employe.setEmail(email);
+		l.info("employe updated : " + employe);
 		employeRepository.save(employe);
-
+      
 	}
 
 	@Transactional	
@@ -69,6 +87,11 @@ public class EmployeServiceImpl implements IEmployeService {
 		deptRepoistory.save(depManagedEntity); 
 
 	}
+	
+	
+	
+	
+	
 	@Transactional
 	public void desaffecterEmployeDuDepartement(int employeId, int depId)
 	{
