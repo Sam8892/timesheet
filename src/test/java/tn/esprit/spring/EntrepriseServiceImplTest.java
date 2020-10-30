@@ -1,6 +1,10 @@
 package tn.esprit.spring;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,9 +24,8 @@ public class EntrepriseServiceImplTest {
 	IEntrepriseService IEntreprise;
 	
 	@Test
-	public void testajouterEntreprise() {
-		
-		
+	public void testAjouterEntreprise() {
+	
 		Entreprise entr = new Entreprise("Esprit", "Ariana"); 
 		int  entrepriseAdded = IEntreprise.ajouterEntreprise(entr);
 		
@@ -30,10 +33,50 @@ public class EntrepriseServiceImplTest {
 		
 	}
 	@Test
-	public void ajouterDepartement() {
+	public void testAjouterDepartement() {
 		Departement dep = new Departement("electronique");
 		int  departementAdded = IEntreprise.ajouterDepartement(dep);
 		assertEquals(departementAdded,dep.getId());
+		
+	}
+	
+	
+	
+	@Test
+	public void testAffecterDepartementAEntreprise() {
+		
+		
+		IEntreprise.affecterDepartementAEntreprise(5, 4);
+		
+		
+		
+	}
+	
+	@Test
+	public void getAllDepartementsNamesByEntreprise() {
+		List<String>  names =  IEntreprise.getAllDepartementsNamesByEntreprise(10);
+		assertEquals(1L, names.get(10));
+		
+	}
+	
+	@Test
+	public void testDeleteEntrepriseById() {
+		IEntreprise.deleteEntrepriseById(17);
+		//assertNull(IEntreprise.getEntrepriseById(14));
+	}
+	
+	@Test
+	public void testDeleteDepartementById() {
+		IEntreprise.deleteDepartementById(17);
+		
+	}
+	
+	
+	@Test
+	public void testGetEntrepriseById() {
+		Entreprise e = IEntreprise.getEntrepriseById(4);
+		assertEquals(4,e.getId());
+
 		
 	}
 	
