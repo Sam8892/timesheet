@@ -55,19 +55,19 @@ public class EntrepriseServiceImplTest {
 	@Test
 	public void getAllDepartementsNamesByEntreprise() {
 		List<String>  names =  IEntreprise.getAllDepartementsNamesByEntreprise(10);
-		//assertEquals(1L, names.get(10));
+		
 		
 	}
 	
 	@Test
 	public void testDeleteEntrepriseById() {
-		IEntreprise.deleteEntrepriseById(13);
-		//assertNull(IEntreprise.getEntrepriseById(14));
+		IEntreprise.deleteEntrepriseById(20);
+		
 	}
 	
 	@Test
 	public void testDeleteDepartementById() {
-		IEntreprise.deleteDepartementById(2);
+		IEntreprise.deleteDepartementById(20);
 		
 	}
 	
