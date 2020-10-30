@@ -92,7 +92,12 @@ public class Employe implements Serializable {
 		this.actif = actif;
 		this.role = role;
 	}
-	
+	public Employe(String nom, String prenom, String email, boolean actif) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.actif = actif;
+	}
 	public Employe(String nom, String prenom, String email, boolean actif, Role role) {
 		this.nom = nom;
 		this.prenom = prenom;
