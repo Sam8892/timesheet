@@ -61,13 +61,13 @@ public class EntrepriseServiceImplTest {
 	
 	@Test
 	public void testDeleteEntrepriseById() {
-		IEntreprise.deleteEntrepriseById(20);
+		IEntreprise.deleteEntrepriseById(28);
 		
 	}
 	
 	@Test
 	public void testDeleteDepartementById() {
-		IEntreprise.deleteDepartementById(20);
+		IEntreprise.deleteDepartementById(28);
 		
 	}
 	
