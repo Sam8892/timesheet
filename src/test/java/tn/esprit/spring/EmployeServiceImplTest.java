@@ -36,10 +36,10 @@ public class EmployeServiceImplTest {
 
 	@Test
 	public void testAuthenticate () {
-		 Employe e = new Employe("Junit", "Junit","test1@gmail.com" ,"l123456",false,Role.INGENIEUR);
+		 Employe e = new Employe("Laifi", "Saddem","saddem@esprit.tn" ,"laifi123",false,Role.ADMINISTRATEUR);
 		Employe Authentification = emp.authenticate(e.getEmail(), e.getPassword());
-	    //assertEquals ("test1@gmail.com", Authentification.getEmail());
-		assertEquals("hhhhhhh", Authentification.getEmail());
+
+		assertEquals("saddem@esprit.tn", Authentification.getEmail());
 	}
 	
 	@Test
@@ -161,7 +161,7 @@ public class EmployeServiceImplTest {
 	
 	@Test
 	public void testdeleteAllContratJPQL(){
-		//List<Contrat> listContrat = con.getAllContrats();
+		
 		emp.deleteAllContratJPQL();
 		List<Contrat> listContrat = con.getAllContrats();
 		assertEquals(0,listContrat.size());
