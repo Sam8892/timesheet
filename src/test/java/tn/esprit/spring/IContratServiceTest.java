@@ -33,7 +33,6 @@ public class IContratServiceTest {
 	  public void testajouterContrat() throws ParseException{
 		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		  Date dd = dateFormat.parse("2015-03-23");
-		  Date df = dateFormat.parse("2015-03-23");
 		  Contrat ctr =new Contrat(dd, "stagiaire", 250);
 		  int Addedctr = ctrService.ajouterContrat(ctr);
 		  assertEquals(ctr.getReference(), Addedctr);
@@ -55,22 +54,22 @@ public class IContratServiceTest {
 	  
 	  @Test
 	  public void testdeleteContratById(){
-		  int id = 10 ;
+		  int id = 15 ;
 		  ctrService.deleteContratById(id);
-		  assertEquals(id,10);
+		  assertEquals(id,15);
 	  }
 	
 	  @Test
 	  public void testdgetAllContrats(){
 		  List<Contrat> listEmploye = ctrService.getAllContrats();
-		  assertEquals(4, listEmploye.size());
+		  assertEquals(22, listEmploye.size());
 	  }
 	  
 	 
 	  @Test
 	  public void testdgetContratById(){
-         int id = 14;
+         int id = 2;
          ctrService.getContratById(id);
-		 assertEquals(id,14);
+		 assertEquals(id,2);
 	  }
 }

@@ -9,9 +9,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
-	<artifactId>timesheet</artifactId>
+	<artifactId>timesheet-VHoussemKraoua</artifactId>
 	<version>1.0</version>
 	<name>timesheet</name>
+	<packaging>jar</packaging>
 	<description>timesheet</description>
 
 	<properties>
@@ -20,6 +21,12 @@
 	</properties>
 
 	<dependencies>
+	   <dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <version>4.13.1</version>
+	    <scope>test</scope>
+     </dependency>
        <dependency>
             <groupId>net.minidev</groupId>
             <artifactId>asm</artifactId>

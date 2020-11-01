@@ -1,6 +1,6 @@
 package tn.esprit.spring.services;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Contrat;
-import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.repository.ContratRepository;
 import tn.esprit.spring.repository.EmployeRepository;
@@ -33,16 +32,16 @@ public class ContratServiceImpl implements IContratService {
 
 	@Override
 	public int ajouterContrat(Contrat contrat) {
-		l.info("In ajouterContrat : " + contrat);
+		l.info("In ajouterContrat : ");
 		contratRepository.save(contrat);
-		l.info("out of ajouterContrat:" + contrat.getReference());
+		l.info("out of ajouterContrat:");
 		return contrat.getReference();
 	}
 
 
 	@Override
 	public void affecterContratAEmploye(int conID, int empID) {
-		l.info("In affecterContratAEmploye : " + conID + " "+empID);
+		l.info("In affecterContratAEmploye :");
 		Contrat ctrManagedEntity = contratRepository.findById(conID).get();
 		Employe employeManagedEntity = employeRepository.findById(empID).get();
 		l.debug("check contrat employee by ID  : ");
@@ -56,7 +55,7 @@ public class ContratServiceImpl implements IContratService {
 
 	@Override
 	public void deleteContratById(int ContratId) {
-		l.info("In deleteContratById : " + ContratId);
+		l.info("In deleteContratById : ");
 		l.debug("check for contrat id then delete");
 		Contrat contratManagedEntity = contratRepository.findById(ContratId).get();
 		contratRepository.delete(contratManagedEntity);

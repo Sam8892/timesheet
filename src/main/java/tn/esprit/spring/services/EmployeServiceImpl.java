@@ -40,7 +40,7 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Override
 	public Employe authenticate(String login, String password) {
-		l.info("In authenicate : login =" + login);
+		l.info("In authenicate : login =");
 		 
 		return employeRepository.getEmployeByEmailAndPassword(login, password);
 	
@@ -51,19 +51,19 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Override
 	public int addOrUpdateEmploye(Employe employe) {
-		l.info("In addOrUpdate : " + employe);
+		l.info("In addOrUpdate : " );
 		employeRepository.save(employe);
-		l.info("out of addOrUpdate:" + employe.getId());
+		l.info("out of addOrUpdate:" );
 		return employe.getId();
 	}
 
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
-		l.info("In getEmployeById : " + employeId);
+		l.info("In getEmployeById : ");
 		Employe employe = employeRepository.findById(employeId).get();
-		l.info("In added new Email : " + email);
+		l.info("In added new Email : ");
 		employe.setEmail(email);
-		l.info("employe updated : " + employe);
+		l.info("employe updated : ");
 		employeRepository.save(employe);
       
 	}
