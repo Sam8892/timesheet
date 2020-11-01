@@ -10,23 +10,25 @@
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
 	<artifactId>timesheet-VHoussemKraoua</artifactId>
-	<version>1.0</version>
+	<version>2.0</version>
 	<name>timesheet</name>
 	<packaging>jar</packaging>
 	<description>timesheet</description>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 
-	<dependencies>
-	   <dependency>
-	    <groupId>junit</groupId>
-	    <artifactId>junit</artifactId>
-	    <version>4.13.1</version>
-	    <scope>test</scope>
-     </dependency>
+	   <dependencies>
+		   <dependency>
+		   <groupId>junit</groupId>
+		   <artifactId>junit</artifactId>
+		   <version>4.13.1</version>
+		   <scope>test</scope>
+	   </dependency>
        <dependency>
             <groupId>net.minidev</groupId>
             <artifactId>asm</artifactId>
@@ -120,6 +122,7 @@
 
 
 	<build>
+
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
