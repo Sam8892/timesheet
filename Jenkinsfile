@@ -39,6 +39,12 @@ pipeline{
                 bat "mvn package";
             }
         }
+       stage('Deploiement') {
+            steps {
+                echo "deploying the code";
+                bat "mvn clean package deploy:deploy-file -DgroupId=tn.esprit.spring -DartifactId=timesheet -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar  -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/timesheet-1.0.jar";
+            }
+        }
         
     }
    
