@@ -22,7 +22,8 @@ import tn.esprit.spring.services.IEmployeService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class IContratServiceTest {
-	  @Autowired
+	  private static final String type = "stagiaire";
+	@Autowired
 	  IEmployeService empService;
 	  @Autowired
 	  IContratService ctrService;
@@ -32,7 +33,7 @@ public class IContratServiceTest {
 	  public void testajouterContrat() throws ParseException{
 		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		  Date dd = dateFormat.parse("2015-03-23");
-		  Contrat ctr =new Contrat(dd, "stagiaire", 250);
+		  Contrat ctr =new Contrat(dd,type, 250,216582);
 		  int Addedctr = ctrService.ajouterContrat(ctr);
 		  assertEquals(ctr.getReference(), Addedctr);
 	  }
@@ -42,13 +43,13 @@ public class IContratServiceTest {
 		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		  Date dd = dateFormat.parse("2015-03-23");
 		  Employe e = new Employe("houssem", "kraoua","testEmp@gmail.com","123456HK",false,tn.esprit.spring.entities.Role.ADMINISTRATEUR);
-		  Contrat ctr =new Contrat(dd, "stagiaire", 250);
+		  Contrat ctr =new Contrat(dd, type, 250);
 		  ctrService.ajouterContrat(ctr);
 		  empService.addOrUpdateEmploye(e);
 		  ctr.setEmploye(e);
 		  ctrService.affecterContratAEmploye(ctr.getReference(),e.getId());
 		  assertEquals(e.getNom(),"houssem");
-		  assertEquals(ctr.getTypeContrat(),"stagiaire");
+		  assertEquals(ctr.getTypeContrat(),type);
 	  }
 	  /*
 	  @org.junit.jupiter.api.Test

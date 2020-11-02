@@ -11,8 +11,8 @@ public interface IContratService {
 	public List<Contrat> getAllContrats();
 	public int ajouterContrat(Contrat contrat);
 	public void affecterContratAEmploye(int conID, int empID);
-	public void deleteContratById(int ContratId);
-	public Contrat getContratById(int ContratId);
+	public void deleteContratById(int id);
+	public Contrat getContratById(int id);
     
 	
 	
