@@ -80,20 +80,20 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 
 	@Transactional
 	public void deleteEntrepriseById(int entrepriseId) {
-		try {
+		
 			l.info("deleteEntrepriseById : " + entrepriseId);
 			entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).get());
-		}catch (Exception e) {l.error("Erreur : " + e);}
+		
 		
 		
 	}
 
 	@Transactional
 	public void deleteDepartementById(int depId) {
-		try {
+	
 		l.info("deleteDepartementById : " + depId);
 		deptRepoistory.delete(deptRepoistory.findById(depId).get());
-		}catch (Exception e) {l.error("Erreur : " + e);}
+		
 	}
 
 	public Entreprise getEntrepriseById(int entrepriseId) {
@@ -107,18 +107,6 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		}
 
 		return entreprise;
-	}
-
-	@Override
-	public List<Entreprise> retrieveAllEntreprises() {
-		l.info("In  retrieveAllEmployes : ");
-		List<Entreprise> entreprises = (List<Entreprise>) entrepriseRepoistory.findAll();
-		for (Entreprise entreprise : entreprises) {
-			l.debug("entreprise +++ : " + entreprise);
-		}
-		l.info("Out of retrieveAllEntreprises.");
-		return entreprises;
-
 	}
 
 }

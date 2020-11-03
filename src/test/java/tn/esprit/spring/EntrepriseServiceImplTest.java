@@ -30,10 +30,9 @@ public class EntrepriseServiceImplTest {
 	@Test
 	public void testAjouterEntreprise() {
 	
-		Entreprise entr = new Entreprise("Esprit", "Ariana"); 
-		int  entrepriseAdded = IEntreprise.ajouterEntreprise(entr);
-		
-		assertEquals(entr.getId(), entrepriseAdded);
+		Entreprise entreprise = new Entreprise("Esprit", "Ariana"); 
+		int  entrepriseAdded = IEntreprise.ajouterEntreprise(entreprise);
+		assertEquals(entrepriseAdded,entreprise.getId());
 		
 	}
 	
@@ -66,9 +65,8 @@ public class EntrepriseServiceImplTest {
 	
 	@Test
 	public void testDeleteEntrepriseById() {
-		IEntreprise.deleteEntrepriseById(9);
-		//List<Entreprise> listEntreprises = IEntreprise.retrieveAllEntreprises();
-		//assertEquals(45, listEntreprises.size());
+		IEntreprise.deleteEntrepriseById(49);
+		
 	}
 
 
@@ -77,9 +75,8 @@ public class EntrepriseServiceImplTest {
 	
 	@Test
 	public void testDeleteDepartementById() {
-		IEntreprise.deleteDepartementById(19);
-		//List<Departement> listDepartements = IDepartement.getAllDepartements();
-		//assertEquals(44, listDepartements.size());
+		IEntreprise.deleteDepartementById(48);
+		
 		
 		
 	}
