@@ -44,9 +44,6 @@ public class EmployeServiceImpl implements IEmployeService {
 		 
 		return employeRepository.getEmployeByEmailAndPassword(login, password);
 	
-
-	 
-	
 	   }
 
 	@Override
@@ -70,7 +67,9 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Transactional	
 	public void affecterEmployeADepartement(int employeId, int depId) {
+		l.info("In get departement  by Id: " + depId);
 		Departement depManagedEntity = deptRepoistory.findById(depId).get();
+		l.info("In get Employe by Id : " + employeId);
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 
 		if(depManagedEntity.getEmployes() == null){
@@ -83,7 +82,7 @@ public class EmployeServiceImpl implements IEmployeService {
 			depManagedEntity.getEmployes().add(employeManagedEntity);
 		}
 
-		// à ajouter? 
+		
 		deptRepoistory.save(depManagedEntity); 
 
 	}

@@ -48,7 +48,7 @@ public class EmployeServiceImplTest {
 		Employe e = new Employe("BenFoulen ", "foulen ","foulen2@gmail.com","123456",true,Role.TECHNICIEN);
 		
 		int employeAdded = emp.addOrUpdateEmploye(e);
-		assertNotNull (e);
+		assertNotNull (employeAdded);
 	}
 	
 	@Test
@@ -102,7 +102,7 @@ public class EmployeServiceImplTest {
 	     Employe e = new Employe(4,"John");
 	    
 	     emp.affecterContratAEmploye(c.getReference(), e.getId());
-		// assertEquals(e.getNom(),"Dao") ;
+	
 		 assertEquals (c.getTypeContrat(), "SIVP");
 	 }
 	 
