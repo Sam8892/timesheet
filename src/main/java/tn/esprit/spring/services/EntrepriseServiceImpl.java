@@ -24,15 +24,26 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	DepartementRepository deptRepoistory;
 
 	public int ajouterEntreprise(Entreprise entreprise) {
-		l.info("Entreprise : ");
-		entrepriseRepoistory.save(entreprise);
-		l.debug("entreprise +++ : " + entreprise);
+		int id = 0 ; 
+		try{
+			l.info("Entreprise : " + entreprise);
+			entrepriseRepoistory.save(entreprise);
+			id = entreprise.getId();
+			l.info("ajouterEntreprise() : " + id);
+		}catch (Exception e) {l.error("Erreur : " + e);}
+		
 		return entreprise.getId();
 	}
 
 	public int ajouterDepartement(Departement dep) {
-		deptRepoistory.save(dep);
-		l.debug("Departement +++ : " + dep);
+		int id = 0 ; 
+		try {
+			l.info("Departement +++ : " + dep);
+			deptRepoistory.save(dep);
+			l.info("ajouterDepartement() : " + id);
+		}catch (Exception e) {l.error("Erreur : " + e);}
+		
+		
 		return dep.getId();
 	}
 
@@ -69,19 +80,45 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 
 	@Transactional
 	public void deleteEntrepriseById(int entrepriseId) {
-		l.debug("deleteEntrepriseById : " + entrepriseId);
-		entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).get());
+		try {
+			l.info("deleteEntrepriseById : " + entrepriseId);
+			entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).get());
+		}catch (Exception e) {l.error("Erreur : " + e);}
+		
+		
 	}
 
 	@Transactional
 	public void deleteDepartementById(int depId) {
-		l.debug("deleteDepartementById : " + depId);
+		try {
+		l.info("deleteDepartementById : " + depId);
 		deptRepoistory.delete(deptRepoistory.findById(depId).get());
+		}catch (Exception e) {l.error("Erreur : " + e);}
 	}
 
 	public Entreprise getEntrepriseById(int entrepriseId) {
-		l.debug("deleteDepartementById : " + entrepriseId);
-		return entrepriseRepoistory.findById(entrepriseId).get();
+		Entreprise entreprise = null;
+		try {
+			l.info("In getEntrepriseById(" + entrepriseId + ")");
+			entreprise = entrepriseRepoistory.findById(entrepriseId).get();
+			l.info("Out getEntrepriseById() : " + entreprise);
+		} catch (Exception e) {
+			l.error("Erreur : " + e);
+		}
+
+		return entreprise;
+	}
+
+	@Override
+	public List<Entreprise> retrieveAllEntreprises() {
+		l.info("In  retrieveAllEmployes : ");
+		List<Entreprise> entreprises = (List<Entreprise>) entrepriseRepoistory.findAll();
+		for (Entreprise entreprise : entreprises) {
+			l.debug("entreprise +++ : " + entreprise);
+		}
+		l.info("Out of retrieveAllEntreprises.");
+		return entreprises;
+
 	}
 
 }

@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
+import tn.esprit.spring.services.IDepartementService;
 import tn.esprit.spring.services.IEntrepriseService;
 
 @RunWith(SpringRunner.class)
@@ -22,6 +23,9 @@ public class EntrepriseServiceImplTest {
 
 	@Autowired
 	IEntrepriseService IEntreprise;
+	@Autowired
+	IDepartementService IDepartement;
+	
 	
 	@Test
 	public void testAjouterEntreprise() {
@@ -32,6 +36,7 @@ public class EntrepriseServiceImplTest {
 		assertEquals(entr.getId(), entrepriseAdded);
 		
 	}
+	
 	@Test
 	public void testAjouterDepartement() {
 		Departement dep = new Departement("electronique");
@@ -46,28 +51,36 @@ public class EntrepriseServiceImplTest {
 	public void testAffecterDepartementAEntreprise() {
 		
 		
-		IEntreprise.affecterDepartementAEntreprise(4, 2);
-		
-		
+		IEntreprise.affecterDepartementAEntreprise(8, 10);
 		
 	}
 	
 	@Test
 	public void getAllDepartementsNamesByEntreprise() {
-		List<String>  names =  IEntreprise.getAllDepartementsNamesByEntreprise(10);
 		
+		List<String>  names =  IEntreprise.getAllDepartementsNamesByEntreprise(3);
+		
+		assertEquals(3,names.size());
 		
 	}
 	
 	@Test
 	public void testDeleteEntrepriseById() {
-		IEntreprise.deleteEntrepriseById(37);
-		
+		IEntreprise.deleteEntrepriseById(9);
+		//List<Entreprise> listEntreprises = IEntreprise.retrieveAllEntreprises();
+		//assertEquals(45, listEntreprises.size());
 	}
+
+
+	
+	
 	
 	@Test
 	public void testDeleteDepartementById() {
-		IEntreprise.deleteDepartementById(30);
+		IEntreprise.deleteDepartementById(19);
+		//List<Departement> listDepartements = IDepartement.getAllDepartements();
+		//assertEquals(44, listDepartements.size());
+		
 		
 	}
 	
